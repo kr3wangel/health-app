@@ -1,0 +1,101 @@
+<!-- <div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Profile</h4>
+            <p class="card-category">Complete your profile</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Username</label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                  </div>
+                </div>
+               
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Fist Name</label>
+                    <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right" (click)="createUser($event)">Create Profile</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="card mt-5" style="margin:auto;width: 600px;">
+  <div class="card-body">
+    <h5 class="card-title">Login</h5>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="Email Address" [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+      <label for="email">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="tryLogin()">Login</button>
+  </div>
+</div> -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Register</h4>
+          </div>
+          <div class="card-body px-5">
+            <form>
+              <div class="row pb-4">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Username</label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">First Name</label>
+                    <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Password</label>
+                    <input type="text" class="form-control" name="password" [(ngModel)]="password">
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
