@@ -19,11 +19,8 @@ export class UserService {
     });
   }
 
-  public getUser(userId: number) {
-    this.http.get<User>(`${this.baseUrl}/users/${userId}`)
-      .subscribe(user => {
-        console.log(`${user.firstName} was successfully retrieved`);
-      });
+  public getUser(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/users/${userId}`);
   }
 
   public editUser(user: User) {
@@ -33,9 +30,10 @@ export class UserService {
       });
   }
 
-  public addUser(user: User) {
-    this.http.post(`${this.baseUrl}/users`, user)
+  public addUser(user: User): any {
+    return this.http.post(`${this.baseUrl}/users`, user)
       .subscribe(x => {
+        debugger;
         console.log(`${user.username} was created successfully`);
       });
   }
