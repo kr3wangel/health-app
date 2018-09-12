@@ -14,15 +14,10 @@ export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
-    this.authService.user
-      .subscribe(profile => {
-        this.user = profile;
-      });
-
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   public save() {
-    debugger;
     this.userService.editUser(this.user);
   }
 

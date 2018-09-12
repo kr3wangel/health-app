@@ -63,8 +63,6 @@ export class AuthService {
         });
 
         this.setUser(user);
-
-        this.router.navigate(['/profile']);
       });
     });
 
@@ -80,6 +78,7 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this._user.next(<User>({}));
     this.router.navigate(['/']);
   }
@@ -92,9 +91,14 @@ export class AuthService {
     return this._user.asObservable();
   }
 
-  public setUser(user: User) {
-    this._user.next(user);
+  public setUser(oAuthUser: User) {
+    // addUser will ether add or return a user based on oAuthId
+    this.userService.addUser(oAuthUser)
+      .subscribe(user => {
+        localStorage.setItem('user', JSON.stringify(user[0]));
+        this._user.next(user);
 
-    this.userService.addUser(user);
+        this.router.navigate(['/profile']);
+      });
   }
 }

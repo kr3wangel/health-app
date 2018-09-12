@@ -24,18 +24,15 @@ export class UserService {
   }
 
   public editUser(user: User) {
-    this.http.post(`${this.baseUrl}/users`, user)
-      .subscribe(x => {
-        console.log(`${user.userId} successfully updated`);
+    this.http.post(`${this.baseUrl}/users/update`, user)
+      .subscribe(editedUser => {
+        localStorage.setItem('user', JSON.stringify(editedUser));
+        console.log(`successfully updated`);
       });
   }
 
-  public addUser(user: User): any {
-    return this.http.post(`${this.baseUrl}/users`, user)
-      .subscribe(x => {
-        debugger;
-        console.log(`${user.username} was created successfully`);
-      });
+  public addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/users`, user);
   }
 
   public deleteUser(userId: number) {
