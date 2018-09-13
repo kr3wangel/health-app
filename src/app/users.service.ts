@@ -19,20 +19,25 @@ export class UserService {
     });
   }
 
-  public getUser(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/users/${userId}`);
-  }
-
-  public editUser(user: User) {
-    this.http.post(`${this.baseUrl}/users/update`, user)
-      .subscribe(editedUser => {
-        localStorage.setItem('user', JSON.stringify(editedUser));
-        console.log(`successfully updated`);
+  public getUser(userId: number) {
+    this.http.get<User>(`${this.baseUrl}/users/${userId}`)
+      .subscribe(user => {
+        console.log(`${user.firstName} was successfully retrieved`);
       });
   }
 
-  public addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/users`, user);
+  public editUser(user: User) {
+    this.http.post(`${this.baseUrl}/users`, user)
+      .subscribe(x => {
+        console.log(`${user.userId} successfully updated`);
+      });
+  }
+
+  public addUser(user: User) {
+    this.http.post(`${this.baseUrl}/users`, user)
+      .subscribe(x => {
+        console.log(`${user.username} was created successfully`);
+      });
   }
 
   public deleteUser(userId: number) {
