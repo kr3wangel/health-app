@@ -16,6 +16,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <!-- <link href="node_modules/material-dashboard/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" /> -->
+  <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+  <script type="text/javascript">
+    var auth0 = new auth0.WebAuth({
+      clientID: 'S24Jn4j4QRM5Q3iyViDOeTCu2pD3PCEA',
+      domain: 'hd-angel.auth0.com'
+    });
+    auth0.crossOriginVerification();
+  </script>
 </head>
 
 <body class="">
@@ -34,15 +42,27 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" [routerLink]="['/dashboard']">
+            <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['/dashboard']">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active  ">
-            <a class="nav-link" [routerLink]="['/registration']">
+            <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['/profile']">
               <i class="material-icons">how_to_reg</i>
-              <p>Registration</p>
+              <p>Profile</p>
+            </a>
+          </li>
+          <li class="nav-item active  ">
+            <a class="nav-link" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+              <i class="material-icons">person</i>
+              <p>Login</p>
+            </a>
+          </li>
+          <li class="nav-item active  ">
+            <a class="nav-link" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+              <i class="material-icons">settings_power</i>
+              <p>Logout</p>
             </a>
           </li>
           <!-- your sidebar here -->
@@ -54,7 +74,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a class="navbar-brand" href="#">Home</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -67,6 +87,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="material-icons">notifications</i> Notifications
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="login()">
+                  <i class="material-icons">person</i> Login
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="logout()">
+                  <i class="material-icons">settings_power</i> Logout
                 </a>
               </li>
               <!-- your navbar here -->
