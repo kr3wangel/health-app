@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://localhost:44351/api'
+  baseUrl: 'https://localhost:44351/api',
+  auth0: {
+    domain: 'hd-angel.auth0.com',
+    clientId: 'S24Jn4j4QRM5Q3iyViDOeTCu2pD3PCEA',
+    callbackUrl: 'http://localhost:4200/dashboard'
+  }
 };
 
 /*
